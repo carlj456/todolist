@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App - Carlos Therese Pilar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .card {
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .todo {
+      background-color: #ff6b6b;
+    }
+
+    .inprogress {
+      background-color: #f7b731;
+    }
+
+    .done {
+      background-color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Carlos Pilar's To-Do List</h1>
+    <div id="task-list" class="task-list"></div>
+  </div>
+
+  <script>
+    // Predefined task list
+    const tasks = [
+      { title: "GSPS: Case Study", status: "Done" },
+      { title: "Business Process Management: Interview Establishment", status: "InProgress" },
+      { title: "Submit Major Project", status: "ToDo" },
+      { title: "TCW Subject: Film vlog", status: "ToDo" },
+      { title: "Save For Bicycle", status: "InProgress" },
+      { title: "GSPS: Record Report w\ classmate", status: "ToDo" }
+    ];
+
+    const taskList = document.getElementById("task-list");
+
+    tasks.forEach(task => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      switch(task.status) {
+        case "ToDo":
+          card.classList.add("todo");
+          break;
+        case "InProgress":
+          card.classList.add("inprogress");
+          break;
+        case "Done":
+          card.classList.add("done");
+          break;
+      }
+
+      card.innerText = `${task.title} - [${task.status}]`;
+      taskList.appendChild(card);
+    });
+  </script>
+</body>
+</html>
